@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Untuk Tia</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 15% 20%, #ff6fa5, transparent 35%),
+                radial-gradient(circle at 85% 20%, #8d7aff, transparent 35%),
+                radial-gradient(circle at 50% 100%, #4ddcff, transparent 40%),
+                #21152f;
+        }
+
+        .card {
+            width: 90%;
+            max-width: 430px;
+            padding: 40px 28px;
+            text-align: center;
+
+            background: rgba(255,255,255,0.13);
+            backdrop-filter: blur(18px);
+
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 28px;
+
+            box-shadow: 0 25px 70px rgba(0,0,0,0.35);
+
+            color: white;
+            z-index: 2;
+        }
+
+        .heart {
+            font-size: 70px;
+            color: #ff5c98;
+            text-shadow: 0 0 25px #ff5c98;
+            animation: beat 1.2s infinite;
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        h1 {
+            margin: 15px 0;
+            font-size: 30px;
+
+            background: linear-gradient(
+                90deg,
+                #ff77a8,
+                #ffe066,
+                #72e8ff
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        h2 {
+            margin: 20px 0;
+            font-size: 21px;
+        }
+
+        p {
+            line-height: 1.7;
+            color: #f8edf4;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            min-height: 55px;
+        }
+
+        button {
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        #iya {
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #ff3f83,
+                #ff754d
+            );
+
+            box-shadow: 0 0 20px rgba(255,63,131,0.5);
+        }
+
+        #iya:active {
+            transform: scale(0.95);
+        }
+
+        #tidak {
+            color: white;
+            background: rgba(255,255,255,0.16);
+
+            border: 1px solid rgba(255,255,255,0.3);
+
+            position: relative;
+        }
+
+        #hasil {
+            display: none;
+        }
+
+        .jatuh {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            animation: turun 5s linear forwards;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @keyframes turun {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HALAMAN PERTAMA -->
+
+    <div class="card" id="pertanyaan">
+
+        <div class="heart">♥</div>
+
+        <h1>Untuk Rizwina agustia</h1>
+
+        <p>
+            Sebenarnya Fahrial udah lama mau ngomong
+            sesuatu sama Tia.
+            <br><br>
+
+            Tapi tiap mau ngomong langsung,
+            malah bingung sendiri mau mulai dari mana.
+            <br><br>
+
+            Jadi daripada makin lama makin nggak jelas,
+            kali ini Fahrial mau jujur aja.
+            <br><br>
+
+            Fahrial suka sama Tia.
+        </p>
+
+        <h2>
+            Tia mau nggak jadi pacar Fahrial?wkwk
+        </h2>
+
+        <div class="buttons">
+
+            <button id="iya">
+                Mau dong sayang ♥
+            </button>
+
+            <button id="tidak">
+                Nggak,tia udah ada kating
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- HALAMAN SETELAH DITERIMA -->
+
+    <div class="card" id="hasil">
+
+        <div class="heart">♥</div>
+
+        <h1>Serius Tia?</h1>
+
+        <p>
+            Fahrial kira bakal ditolak wkwk.
+            <br><br>
+
+            Tapi ternyata Tia bilang iya.
+            Jujur Fahrial seneng banget.
+            <br><br>
+
+            Mulai sekarang kita jalanin sama-sama ya.
+            Nggak harus selalu sempurna,
+            yang penting kita saling ngerti,
+            saling jaga, dan jangan gampang nyerah.
+        </p>
+
+        <h2>
+            Makasih udah pilih Fahrial ♥
+        </h2>
+
+        <p>
+            — Fahrial
+        </p>
+
+    </div>
+
+
+    <script>
+
+        const tombolIya = document.getElementById("iya");
+        const tombolTidak = document.getElementById("tidak");
+
+
+        // TOMBOL IYA
+
+        tombolIya.addEventListener("click", function () {
+
+            document.getElementById("pertanyaan").style.display = "none";
+
+            document.getElementById("hasil").style.display = "block";
+
+            hujanHati();
+
+        });
+
+
+        // TOMBOL NGGAK
+
+        function kabur() {
+
+            const maxX = window.innerWidth - 120;
+            const maxY = window.innerHeight - 70;
+
+            const x = Math.max(
+                10,
+                Math.random() * maxX
+            );
+
+            const y = Math.max(
+                10,
+                Math.random() * maxY
+            );
+
+            tombolTidak.style.position = "fixed";
+            tombolTidak.style.left = x + "px";
+            tombolTidak.style.top = y + "px";
+        }
+
+
+        tombolTidak.addEventListener("touchstart", function(event) {
+
+            event.preventDefault();
+
+            kabur();
+
+        });
+
+
+        tombolTidak.addEventListener("mouseenter", function() {
+
+            kabur();
+
+        });
+
+
+        // HUJAN HATI
+
+        function hujanHati() {
+
+            const simbol = ["♥", "✦", "✧", "♡"];
+
+            for (let i = 0; i < 45; i++) {
+
+                const item = document.createElement("div");
+
+                item.className = "jatuh";
+
+                item.innerText =
+                    simbol[
+                        Math.floor(
+                            Math.random() * simbol.length
+                        )
+                    ];
+
+                item.style.left =
+                    Math.random() * 100 + "vw";
+
+                item.style.color =
+                    `hsl(${Math.random() * 360}, 100%, 70%)`;
+
+                item.style.animationDuration =
+                    (Math.random() * 3 + 3) + "s";
+
+                document.body.appendChild(item);
+
+                setTimeout(function() {
+
+                    item.remove();
+
+                }, 6000);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
